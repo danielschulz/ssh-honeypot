@@ -1,5 +1,5 @@
 # ssh-honeypot
-SSH Honeypot based on the pshitt project
+SSH Honeypot based on the pshitt project [pshitt](https://github.com/regit/pshitt) provided by [regit](https://github.com/regit/pshitt) found by [quidsup](https://www.youtube.com/user/quidsup) from YouTube.
 
 ## Quick Start
 Getting started is quiet easy -- simply run this docker command:
@@ -14,8 +14,8 @@ sudo docker run -d --name ssh-honeypot -p 22:2200 -v ${PWD}/ssh-key-TEST:/apps/s
 
 Obviously, you are free to configure:
 - the Docker Container's name, which here is "ssh-honeypot"
-- the Docker Container's port mapping (${HOST_PORT}:${CONTAINER_PORT})
-- the internally used RSA private RSA-Keyfile using the volumne mount (${HOST_PATH}:${CONTAINER_PATH}) so your Honeypot is not so easy to detect from the outside
+- the Docker Container's port mapping (`${HOST_PORT}:${CONTAINER_PORT}`)
+- the internally used RSA private RSA-Keyfile using the volumne mount (`${HOST_PATH}:${CONTAINER_PATH}`) so your Honeypot is not so easy to detect from the outside
 
 ## Helpful Advice
 
