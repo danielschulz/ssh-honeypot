@@ -9,13 +9,31 @@ sudo docker run -d --name ssh-honeypot -p 22:2200 danielschulz/ssh-honeypot
 
 For more variables to configure this behaviour:
 ```
-sudo docker run -d --name ssh-honeypot -p 22:2200 -v ${PWD}/ssh-key-TEST:/apps/sw/data/keyfiles/keyfile:Z -e DIRECTORY_LOGS="/apps/sw/data/pshitt/logs" -e DIRECTORY_DATA="/apps/sw/data/pshitt/data" -e THREADS=3 danielschulz/ssh-honeypot
+sudo docker run \
+    -d \
+    --name ssh-honeypot \
+    -p 22:2200 \
+    -v ${PWD}/ssh-key-TEST:/apps/data/keyfiles/keyfile:Z \
+    -e DIRECTORY_LOGS="/apps/data/pshitt/logs" \
+    -e DIRECTORY_DATA="/apps/data/pshitt/data" \
+    -e THREADS=3 \
+    danielschulz/ssh-honeypot
 ```
 
 Obviously, you are free to configure:
 - the Docker Container's name, which here is "ssh-honeypot"
 - the Docker Container's port mapping (`${HOST_PORT}:${CONTAINER_PORT}`)
 - the internally used RSA private RSA-Keyfile using the volumne mount (`${HOST_PATH}:${CONTAINER_PATH}`) so your Honeypot is not so easy to detect from the outside
+
+You may get your attempted usernames using the internalized `jq` command from your host system:
+```
+sudo docker exec ssh-honeypot jq '.username' /apps/data/pshitt/data/data.json
+```
+
+You may get your passwords using the internalized `jq` command from your host system:
+```
+sudo docker exec ssh-honeypot jq '.password' /apps/data/pshitt/data/data.json
+```
 
 ## Helpful Advice
 
