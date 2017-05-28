@@ -18,7 +18,7 @@ RUN apt-get install -y git && \
     pip install ${INTERNET_PYTHON_DAEMON_URL} && \
     pip install argparse && \
     pip install paramiko && \
-    wget --no-check-certificate "${INTERNET_JQ_URL}" -O /apps/sw/tools/jq
+    wget "${INTERNET_JQ_URL}" -O /apps/sw/tools/jq
 
 WORKDIR /apps
 
